@@ -1,0 +1,454 @@
+{
+  "info": {
+    "name": "SoftSync CRM API",
+    "description": "Complete API collection for SoftSync CRM AI Developer Challenge",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "RAG Queries",
+      "item": [
+        {
+          "name": "Basic RAG Query",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"Tell me about TechCorp Solutions\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/rag/query",
+              "host": ["{{baseUrl}}"],
+              "path": ["rag", "query"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "RAG Query with @mention",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"What deals do we have?\",\n  \"context\": \"@TechCorp\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/rag/query",
+              "host": ["{{baseUrl}}"],
+              "path": ["rag", "query"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "RAG Query with LLM Off",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"Show me information about our contacts\",\n  \"llmOff\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/rag/query",
+              "host": ["{{baseUrl}}"],
+              "path": ["rag", "query"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "RAG Query - Company Search",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"Which companies are in the manufacturing industry?\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/rag/query",
+              "host": ["{{baseUrl}}"],
+              "path": ["rag", "query"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "RAG Query - Contact Search",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"Who are the CTOs in our database?\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/rag/query",
+              "host": ["{{baseUrl}}"],
+              "path": ["rag", "query"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "RAG Query - Deal Pipeline",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"What deals are in the negotiation stage?\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/rag/query",
+              "host": ["{{baseUrl}}"],
+              "path": ["rag", "query"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Outreach Agent",
+      "item": [
+        {
+          "name": "Simulate Enterprise Outreach",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupId\": \"enterprise-group-id\",\n  \"template\": \"Hi {{firstName}},\\n\\nI hope this email finds you well. I wanted to reach out because {{company}} seems like a perfect fit for our enterprise CRM solution.\\n\\nWould you be interested in a brief 15-minute demo to see how we can help streamline your sales process?\\n\\nBest regards,\\nSales Team\",\n  \"templateVariables\": {\n    \"productName\": \"SoftSync CRM\",\n    \"discount\": \"20%\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/agent/outreach/simulate",
+              "host": ["{{baseUrl}}"],
+              "path": ["agent", "outreach", "simulate"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Simulate Startup Outreach",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupId\": \"startup-group-id\",\n  \"template\": \"Hey {{firstName}},\\n\\nCongrats on the progress with {{company}}! 🚀\\n\\nI know how important it is for startups to have the right tools from day one. Our startup package is designed specifically for growing companies like yours.\\n\\nInterested in seeing how it can help you scale your customer relationships?\\n\\nCheers,\\nStartup Success Team\",\n  \"templateVariables\": {\n    \"specialOffer\": \"50% off first year\",\n    \"setupTime\": \"2 weeks\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/agent/outreach/simulate",
+              "host": ["{{baseUrl}}"],
+              "path": ["agent", "outreach", "simulate"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Simulate Tech Leaders Outreach",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupId\": \"tech-leaders-group-id\",\n  \"template\": \"Hi {{firstName}},\\n\\nAs a {{position}}, you understand the importance of having robust systems that can scale with your technology needs.\\n\\nOur CRM platform offers enterprise-grade APIs, advanced integrations, and the technical flexibility that tech leaders appreciate.\\n\\nWould you like to see our technical documentation and discuss integration possibilities?\\n\\nBest regards,\\nTechnical Sales Team\",\n  \"templateVariables\": {\n    \"apiDocUrl\": \"https://docs.softsync.com\",\n    \"integrations\": \"200+ available\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/agent/outreach/simulate",
+              "host": ["{{baseUrl}}"],
+              "path": ["agent", "outreach", "simulate"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test Idempotency (Duplicate Request)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupId\": \"test-group-id\",\n  \"template\": \"This is a test template for idempotency checking.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/agent/outreach/simulate",
+              "host": ["{{baseUrl}}"],
+              "path": ["agent", "outreach", "simulate"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Email Drafts",
+      "item": [
+        {
+          "name": "Draft Follow-up Email - Book Meeting",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"threadId\": \"thread-1-id\",\n  \"goal\": \"book meeting\",\n  \"tone\": \"professional\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/emails/draft",
+              "host": ["{{baseUrl}}"],
+              "path": ["emails", "draft"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Draft Follow-up Email - Follow Up on Proposal",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"threadId\": \"thread-2-id\",\n  \"goal\": \"follow up on proposal\",\n  \"tone\": \"friendly\",\n  \"additionalContext\": \"The client mentioned they need to discuss with their team about the timeline.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/emails/draft",
+              "host": ["{{baseUrl}}"],
+              "path": ["emails", "draft"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Draft Follow-up Email - Urgent Response",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"threadId\": \"thread-1-id\",\n  \"goal\": \"get response to timeline question\",\n  \"tone\": \"urgent\",\n  \"additionalContext\": \"We need to know about the 4-week implementation timeline by end of week.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/emails/draft",
+              "host": ["{{baseUrl}}"],
+              "path": ["emails", "draft"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Draft Follow-up Email - Price Negotiation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"threadId\": \"thread-2-id\",\n  \"goal\": \"address pricing concerns\",\n  \"tone\": \"professional\",\n  \"additionalContext\": \"Client is interested but concerned about the price point. We can offer volume discounts.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/emails/draft",
+              "host": ["{{baseUrl}}"],
+              "path": ["emails", "draft"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Draft Follow-up Email - Technical Questions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"threadId\": \"thread-1-id\",\n  \"goal\": \"answer technical questions\",\n  \"tone\": \"professional\",\n  \"additionalContext\": \"Client asked about data migration capabilities and integration with their existing ERP system.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/emails/draft",
+              "host": ["{{baseUrl}}"],
+              "path": ["emails", "draft"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Test Scenarios",
+      "item": [
+        {
+          "name": "Test PII Detection in Email Draft",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"threadId\": \"thread-1-id\",\n  \"goal\": \"share sensitive information\",\n  \"additionalContext\": \"Please include my SSN 123-45-6789 and credit card 4532-1234-5678-9012 in the follow-up.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/emails/draft",
+              "host": ["{{baseUrl}}"],
+              "path": ["emails", "draft"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test Error Handling - Invalid Thread",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"threadId\": \"invalid-thread-id\",\n  \"goal\": \"book meeting\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/emails/draft",
+              "host": ["{{baseUrl}}"],
+              "path": ["emails", "draft"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test Error Handling - Invalid Group",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupId\": \"invalid-group-id\",\n  \"template\": \"Test template\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/agent/outreach/simulate",
+              "host": ["{{baseUrl}}"],
+              "path": ["agent", "outreach", "simulate"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test Validation - Empty Query",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/rag/query",
+              "host": ["{{baseUrl}}"],
+              "path": ["rag", "query"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
